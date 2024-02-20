@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.HashMap;
 
@@ -27,7 +28,7 @@ public class FileReader {
           age = Integer.parseInt(myReader.next());
           employee.setAge(age);
         } catch (NumberFormatException e) {
-          System.out.println("An error occurred.");
+          System.out.println("An error occurred. File phrase conversion error.");
           e.printStackTrace();
         }
 
@@ -42,7 +43,7 @@ public class FileReader {
           salary = Integer.parseInt(myReader.next());
           employee.setSalary(salary);
         } catch (NumberFormatException e) {
-          System.out.println("An error occurred.");
+          System.out.println("An error occurred. File phrase conversion error.");
           e.printStackTrace();
         }
 
@@ -50,7 +51,10 @@ public class FileReader {
       }
       myReader.close();
     } catch (FileNotFoundException e) {
-      System.out.println("An error occurred.");
+      System.out.println("An error occurred. File not found.");
+      e.printStackTrace();
+    } catch (NoSuchElementException e) {
+      System.out.println("An error occurred. Missing file phrase.");
       e.printStackTrace();
     }
     return list;
