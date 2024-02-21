@@ -17,9 +17,17 @@ public class FileReader {
       while (myReader.hasNextLine()) {
         Employee employee = new Employee();
 
+        int id = 0;
+        try {
+          id = Integer.parseInt(myReader.next());
+          employee.setId(id);
+        } catch (NumberFormatException e) {
+          System.out.println("An error occurred. File phrase conversion error.");
+          return null;
+        }
+
         String name = myReader.next();
         employee.setName(name);
-
         String surname = myReader.next();
         employee.setSurname(surname);
 
@@ -29,12 +37,11 @@ public class FileReader {
           employee.setAge(age);
         } catch (NumberFormatException e) {
           System.out.println("An error occurred. File phrase conversion error.");
-          e.printStackTrace();
+          return null;
         }
 
         String tin = myReader.next();
         employee.setTin(tin);
-
         String position = myReader.next();
         employee.setPosition(position);
 
@@ -44,7 +51,7 @@ public class FileReader {
           employee.setSalary(salary);
         } catch (NumberFormatException e) {
           System.out.println("An error occurred. File phrase conversion error.");
-          e.printStackTrace();
+          return null;
         }
 
         list.put(surname, employee);
@@ -52,10 +59,10 @@ public class FileReader {
       myReader.close();
     } catch (FileNotFoundException e) {
       System.out.println("An error occurred. File not found.");
-      e.printStackTrace();
+      return null;
     } catch (NoSuchElementException e) {
       System.out.println("An error occurred. Missing file phrase.");
-      e.printStackTrace();
+      return null;
     }
     return list;
   }

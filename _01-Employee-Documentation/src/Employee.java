@@ -1,16 +1,21 @@
 public class Employee {
-  private String name;
+
+  private int id;
   private String surname;
+  private String name;
   private int age;
   private String tin;
   private String position;
   private int salary;
 
-  public void setName(String name) {
-    this.name = name;
+  public void setId(int id) {
+    this.id = id;
   }
   public void setSurname(String surname) {
     this.surname = surname;
+  }
+  public void setName(String name) {
+    this.name = name;
   }
   public void setAge(int age) {
     this.age = age;
@@ -25,11 +30,14 @@ public class Employee {
     this.salary = salary;
   }
 
-  public String getName() {
-    return name;
+  public int getId() {
+    return id;
   }
   public String getSurname() {
     return surname;
+  }
+  public String getName() {
+    return name;
   }
   public int getAge() {
     return age;
